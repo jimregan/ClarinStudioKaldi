@@ -12,7 +12,9 @@ if [ ! -f audio.tar.gz ] ; then
 	curl -O http://mowa.clarin-pl.eu/korpusy/audio.tar.gz
 else
 	echo "File already downloaded! Checking if download is consistent..."
-	curl -O http://mowa.clarin-pl.eu/korpusy/audio.md5sum
+	if [ ! -f audio.md5sum ] ; then
+		curl -O http://mowa.clarin-pl.eu/korpusy/audio.md5sum
+	fi
 	if ! md5sum -c audio.md5sum ; then
 		echo "Download doesn't match the one on the server! "
 		echo "Erase the audio.tar.gz file (and audio folder) and run this script again!"
