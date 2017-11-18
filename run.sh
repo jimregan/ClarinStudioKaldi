@@ -4,10 +4,10 @@
 
 # link to scripts from the standard Kaldi distribution
 # we try to use these as much as possible
-if [ ! -f $KALDI_ROOT/egs/wsj/s5/conf ] ; then ln -s $KALDI_ROOT/egs/wsj/s5/conf ; fi
-if [ ! -f $KALDI_ROOT/egs/wsj/s5/local ] ; then ln -s $KALDI_ROOT/egs/wsj/s5/local ; fi
-if [ ! -f $KALDI_ROOT/egs/wsj/s5/utils ] ; then ln -s $KALDI_ROOT/egs/wsj/s5/utils ; fi
-if [ ! -f $KALDI_ROOT/egs/wsj/s5/steps ] ; then ln -s $KALDI_ROOT/egs/wsj/s5/steps ; fi
+#if [ ! -f $KALDI_ROOT/egs/wsj/s5/conf ] ; then ln -s $KALDI_ROOT/egs/wsj/s5/conf ; fi
+#if [ ! -f $KALDI_ROOT/egs/wsj/s5/local ] ; then ln -s $KALDI_ROOT/egs/wsj/s5/local ; fi
+#if [ ! -f $KALDI_ROOT/egs/wsj/s5/utils ] ; then ln -s $KALDI_ROOT/egs/wsj/s5/utils ; fi
+#if [ ! -f $KALDI_ROOT/egs/wsj/s5/steps ] ; then ln -s $KALDI_ROOT/egs/wsj/s5/steps ; fi
 
 # exits script if error occurs anywhere
 # you might not want to do this for interactive shells.
@@ -139,13 +139,13 @@ export nj=40 ##number of concurrent processes
 
 # Commmon for all of the below:
 #./local/nnet3/run_ivector_common.sh --nj $nj --train_set train --test_sets test --gmm tri3b_ali
-./local/nnet3/run_ivector_common.sh --stage 3 --nj $nj --train_set train --test_sets test --gmm tri3b_ali
+#./local/nnet3/run_ivector_common.sh --stage 3 --nj $nj --train_set train --test_sets test --gmm tri3b_ali
 
-./local_clarin/clarin_tdnn.sh --gmm tri3b_ali --stage 10
-steps/nnet3/decode.sh --nj $nj --num-threads 4 --online-ivector-dir exp/nnet3/ivectors_test_hires \
-          exp/tri3b/graph data/test_hires exp/nnet3/tdnn1a_sp/decode
-./steps/oracle_wer.sh data/test_hires data/lang exp/nnet3/tdnn1a_sp/decode
-./steps/lmrescore_const_arpa.sh data/lang_test data/lang_carpa data/test_hires exp/nnet3/tdnn1a_sp/decode exp/nnet3/tdnn1a_sp/decode_rs
+#./local_clarin/clarin_tdnn.sh --gmm tri3b_ali --stage 10
+#steps/nnet3/decode.sh --nj $nj --num-threads 4 --online-ivector-dir exp/nnet3/ivectors_test_hires \
+#          exp/tri3b/graph data/test_hires exp/nnet3/tdnn1a_sp/decode
+#./steps/oracle_wer.sh data/test_hires data/lang exp/nnet3/tdnn1a_sp/decode
+#./steps/lmrescore_const_arpa.sh data/lang_test data/lang_carpa data/test_hires exp/nnet3/tdnn1a_sp/decode exp/nnet3/tdnn1a_sp/decode_rs
 
 # Same as above but using the chain framework - trains about the same, works much faster as has lower WER
 ./local_clarin/clarin_chain_tdnn.sh --stage 10
