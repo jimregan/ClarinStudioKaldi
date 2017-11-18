@@ -223,7 +223,7 @@ if [ $stage -le 16 ]; then
     --trainer.optimization.final-effective-lrate=0.0001 \
     --trainer.optimization.shrink-value=1.0 \
     --trainer.optimization.proportional-shrink=60.0 \
-    --trainer.num-chunk-per-minibatch=256,128,64 \
+    --trainer.num-chunk-per-minibatch=128,64 \
     --trainer.optimization.momentum=0.0 \
     --egs.chunk-width=$chunk_width \
     --egs.chunk-left-context=$chunk_left_context \
