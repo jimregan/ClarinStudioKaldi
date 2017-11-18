@@ -148,7 +148,8 @@ export nj=40 ##number of concurrent processes
 #./steps/lmrescore_const_arpa.sh data/lang_test data/lang_carpa data/test_hires exp/nnet3/tdnn1a_sp/decode exp/nnet3/tdnn1a_sp/decode_rs
 
 # Same as above but using the chain framework - trains about the same, works much faster as has lower WER
-./local_clarin/clarin_chain_tdnn.sh --stage 10
+#./local_clarin/clarin_chain_tdnn.sh --stage 10
+./local_clarin/clarin_chain_tdnn.sh --stage 16
 ./steps/oracle_wer.sh data/test_hires data/lang exp/chain/tdnn1f_sp/decode
 ./steps/lmrescore_const_arpa.sh data/lang_test data/lang_carpa data/test_hires exp/chain/tdnn1f_sp/decode exp/chain/tdnn1f_sp/decode_rs
 
