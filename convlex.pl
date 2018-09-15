@@ -15,7 +15,7 @@ my %seen = ();
 
 my %phn = (
 	'I' => 'y',
-        'Z' => 'rz',
+	'Z' => 'rz',
 	'dZ' => 'drz',
 	'tS' => 'cz',
 	'S' => 'sz'
@@ -33,12 +33,12 @@ while(<>) {
 	chomp;
 	my @parts = split/[ \t]/;
 	next if($#parts == 0);
-        my $l = shift @parts;
+	my $l = shift @parts;
 	my @phones = map { phone($_) } @parts;
 	my $r = join(" ", @phones);
 	if(exists $seen{$l}) {
-		print "$l($seen{$l}) $r\n";
 		$seen{$l}++;
+		print "$l($seen{$l}) $r\n";
 	} else {
 		print "$l $r\n";
 		$seen{$l} = 1;
